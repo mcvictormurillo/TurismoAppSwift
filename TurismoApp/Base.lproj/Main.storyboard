@@ -172,7 +172,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YaH-HR-03c">
-                                <rect key="frame" x="16" y="120" width="343" height="30"/>
+                                <rect key="frame" x="16" y="164" width="343" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -451,13 +451,30 @@
                                     <outlet property="delegate" destination="fDb-ai-vtb" id="ut3-bd-m6C"/>
                                 </connections>
                             </collectionView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jqy-IV-dA3">
+                                <rect key="frame" x="304" y="547" width="55" height="55"/>
+                                <color key="backgroundColor" red="1" green="0.14438365980000001" blue="0.1656754694" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="55" id="dEJ-TF-XGP"/>
+                                    <constraint firstAttribute="height" constant="55" id="z0I-fX-KxO"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="35"/>
+                                <state key="normal" title="+">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <segue destination="c2g-zM-Aj0" kind="show" id="j42-QK-mqP"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="zfV-YE-hdv" firstAttribute="leading" secondItem="d0M-TV-sSt" secondAttribute="leading" id="2LP-7X-DNr"/>
                             <constraint firstItem="zfV-YE-hdv" firstAttribute="top" secondItem="Ate-TT-V3D" secondAttribute="top" id="8YC-44-5hr"/>
                             <constraint firstItem="d0M-TV-sSt" firstAttribute="bottom" secondItem="zfV-YE-hdv" secondAttribute="bottom" id="PDV-ox-69F"/>
+                            <constraint firstItem="d0M-TV-sSt" firstAttribute="bottom" secondItem="jqy-IV-dA3" secondAttribute="bottom" constant="16" id="Tk5-1a-ZgW"/>
                             <constraint firstItem="d0M-TV-sSt" firstAttribute="trailing" secondItem="zfV-YE-hdv" secondAttribute="trailing" id="oLT-ws-S0j"/>
+                            <constraint firstItem="d0M-TV-sSt" firstAttribute="trailing" secondItem="jqy-IV-dA3" secondAttribute="trailing" constant="16" id="qO5-qU-pR3"/>
                             <constraint firstItem="d0M-TV-sSt" firstAttribute="bottom" secondItem="zfV-YE-hdv" secondAttribute="bottom" id="s1y-sM-WIg"/>
                             <constraint firstItem="d0M-TV-sSt" firstAttribute="trailing" secondItem="zfV-YE-hdv" secondAttribute="trailing" id="sag-Yw-Vkq"/>
                         </constraints>
@@ -466,6 +483,7 @@
                     <navigationItem key="navigationItem" id="egZ-v1-rCJ"/>
                     <connections>
                         <outlet property="collectionViewMain" destination="zfV-YE-hdv" id="fLo-vk-JWz"/>
+                        <outlet property="floatButtonScanner" destination="jqy-IV-dA3" id="QTm-HQ-X3V"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Dhf-9A-kSD" userLabel="First Responder" sceneMemberID="firstResponder"/>

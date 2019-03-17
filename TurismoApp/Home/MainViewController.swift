@@ -12,6 +12,7 @@ class MainViewController: UIViewController,UICollectionViewDataSource, UICollect
 
     @IBOutlet var collectionViewMain: UICollectionView!
     
+    @IBOutlet var floatButtonScanner: UIButton!
     let jsonUrlString = "https://gist.githubusercontent.com/mcvictormurillo/9831d96513c9eaabdb37ba8ec8ba5963/raw/2c2c431c0473c8a2f9606ea03590a7cb45108f7d/place.json"
     
     lazy var places:[Place] = []
@@ -28,7 +29,9 @@ class MainViewController: UIViewController,UICollectionViewDataSource, UICollect
         layout.itemSize = CGSize(width: (self.collectionViewMain.frame.size.width - 20)/2 , height: (self.collectionViewMain.frame.size.height)/3)
         layout.minimumInteritemSpacing = 5 //3
         collectionViewMain.collectionViewLayout = layout
+        floatButtonScanner.layer.cornerRadius = floatButtonScanner.frame.height/2 
        loadPlaces()
+        
     }
     
     func loadPlaces(){
