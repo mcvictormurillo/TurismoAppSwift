@@ -442,6 +442,7 @@
                                         <connections>
                                             <outlet property="imgPlace" destination="oXO-HX-UIV" id="rjL-h4-5oK"/>
                                             <outlet property="tituloTextField" destination="e4i-7N-GQe" id="dRy-L3-CZ1"/>
+                                            <segue destination="2WU-Lg-Agg" kind="show" id="H0o-rq-tdO"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -469,7 +470,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Dhf-9A-kSD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2194.4000000000001" y="91.304347826086968"/>
+            <point key="canvasLocation" x="3063" y="153"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="oh7-dv-AXn">
@@ -518,4 +519,7 @@
         <image name="heart2G" width="50" height="50"/>
         <image name="place" width="350" height="250"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="H0o-rq-tdO"/>
+    </inferredMetricsTieBreakers>
 </document>

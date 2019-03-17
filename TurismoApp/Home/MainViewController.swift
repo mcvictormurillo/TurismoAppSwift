@@ -85,6 +85,15 @@ class MainViewController: UIViewController,UICollectionViewDataSource, UICollect
         cell.imgPlace.image = places[indexPath.item].image
         return cell
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let item = sender as? UICollectionViewCell,
+            let indexPath = collectionViewMain.indexPath(for: item),
+            let detailVC = segue.destination as? DetailViewController{
+            detailVC.place = places[indexPath.item]
+            //print(places[indexPath.item])
+        }
+}
 
 
 
