@@ -11,6 +11,8 @@ import Foundation
 class DetailViewController: UIViewController {
 
     
+    
+    
     @IBOutlet var learnMoreButton: UIButton!
     var place: Place?
     var placeManager = PlacesManager()
@@ -50,6 +52,9 @@ class DetailViewController: UIViewController {
             var latLong = place!.geo.split(separator: ",", maxSplits: 2, omittingEmptySubsequences: true)
             mapVC.latitud = Double(latLong[0])
             mapVC.longitud = Double(latLong[1])
+        
+        
+       
         }
     }
     

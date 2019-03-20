@@ -12,18 +12,25 @@ import MapKit
 class MapViewController: UIViewController {
     var latitud:Double?
     var longitud:Double?
-    let regionRadius: CLLocationDistance = 1000
+    let regionRadius: CLLocationDistance = 500
+    
+    var namePlace:String="hola"
     @IBOutlet var mapView: MKMapView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let initialLocation = CLLocation(latitude: latitud!, longitude: longitud!)
+        
+        guard let latitud = latitud, let longitud = longitud else{
+            return
+        }
+        let initialLocation = CLLocationCoordinate2D(latitude: latitud, longitude: longitud)
+        mapView.addAnnotation(PlaceMap(title: namePlace, coordinate: initialLocation))
         centerMapOnLocation(location: initialLocation)
 }
     
     
-    func centerMapOnLocation(location: CLLocation) {
-        let coordinateRegion = MKCoordinateRegion.init(center: location.coordinate, latitudinalMeters: regionRadius, longitudinalMeters: regionRadius)//MKCoordinateRegionMakeWithDistance(location.coordinate,regionRadius, regionRadius)
+    func centerMapOnLocation(location: CLLocationCoordinate2D) {
+        let coordinateRegion = MKCoordinateRegion.init(center: location, latitudinalMeters: regionRadius, longitudinalMeters: regionRadius)
         mapView.setRegion(coordinateRegion, animated: true)
     }
 

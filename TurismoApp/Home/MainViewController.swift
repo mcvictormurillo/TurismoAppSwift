@@ -13,9 +13,10 @@ class MainViewController: UIViewController,UICollectionViewDataSource, UICollect
     @IBOutlet var collectionViewMain: UICollectionView!
     
     @IBOutlet var floatButtonScanner: UIButton!
-    let jsonUrlString = "https://gist.githubusercontent.com/mcvictormurillo/9831d96513c9eaabdb37ba8ec8ba5963/raw/2c2c431c0473c8a2f9606ea03590a7cb45108f7d/place.json"
+    let jsonUrlString = "https://gist.githubusercontent.com/mcvictormurillo/9831d96513c9eaabdb37ba8ec8ba5963/raw/130c3394428247dc936c37c82c2f07c2be1709d2/place.json"
     
     lazy var places:[Place] = []
+    
     lazy var session: URLSession = {
         let configuration = URLSessionConfiguration.default
         return URLSession(configuration: configuration, delegate: self, delegateQueue:OperationQueue.main)
@@ -53,10 +54,11 @@ class MainViewController: UIViewController,UICollectionViewDataSource, UICollect
     
     func recorreJson(lista:[[String:Any]]){
         for (index,item) in lista.enumerated() {
-         let placeFind = Place.init(json: item, urlJson: jsonUrlString)
-         self.places.append(placeFind)
-         self.loadImage(thumnailUrl: placeFind.urlImage! ,idPlace: index)
-         print("imagen",index, "lugar", placeFind.urlImage!)
+                let placeFind = Place.init(json: item, urlJson: jsonUrlString)
+                self.places.append(placeFind)
+                self.loadImage(thumnailUrl: placeFind.urlImage! ,idPlace: index)
+                print("imagen",index, "lugar", placeFind.urlImage!)
+                     
          }
          print("numero de lugares", places.count)
        

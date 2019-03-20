@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F00ACD1D2242C7EF00103A1D /* PlaceMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00ACD1C2242C7EF00103A1D /* PlaceMap.swift */; };
 		F00E64DB223F0177005E5247 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00E64DA223F0177005E5247 /* MainViewController.swift */; };
 		F00E64DD223F023A005E5247 /* MainCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00E64DC223F023A005E5247 /* MainCollectionViewCell.swift */; };
 		F038694E223EF2A3007BE5C7 /* PruebaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F038694D223EF2A3007BE5C7 /* PruebaViewController.swift */; };
@@ -34,6 +35,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		F00ACD1C2242C7EF00103A1D /* PlaceMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceMap.swift; sourceTree = "<group>"; };
 		F00E64DA223F0177005E5247 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		F00E64DC223F023A005E5247 /* MainCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCollectionViewCell.swift; sourceTree = "<group>"; };
 		F038694D223EF2A3007BE5C7 /* PruebaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PruebaViewController.swift; sourceTree = "<group>"; };
@@ -111,6 +113,7 @@
 			isa = PBXGroup;
 			children = (
 				F0995789223C4571007F5B50 /* MapViewController.swift */,
+				F00ACD1C2242C7EF00103A1D /* PlaceMap.swift */,
 			);
 			path = Map;
 			sourceTree = "<group>";
@@ -301,6 +304,7 @@
 				F0386950223EF2C6007BE5C7 /* PruebaCollectionViewCell.swift in Sources */,
 				F07F387B2228752300476778 /* DetailViewController.swift in Sources */,
 				F00E64DD223F023A005E5247 /* MainCollectionViewCell.swift in Sources */,
+				F00ACD1D2242C7EF00103A1D /* PlaceMap.swift in Sources */,
 				F038694E223EF2A3007BE5C7 /* PruebaViewController.swift in Sources */,
 				F079AEE8222C91B300F02829 /* BarcodeViewController.swift in Sources */,
 				F0EC467C22359923002AF0CC /* FMDatabasePool.m in Sources */,
