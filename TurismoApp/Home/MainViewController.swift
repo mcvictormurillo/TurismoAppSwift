@@ -96,10 +96,24 @@ class MainViewController: UIViewController,UICollectionViewDataSource, UICollect
             let indexPath = collectionViewMain.indexPath(for: item),
             let detailVC = segue.destination as? DetailViewController{
             detailVC.place = places[indexPath.item]
+            //detailVC.delegate 
             //print(places[indexPath.item])
         }
 }
 
 
 
+}
+
+
+
+extension MainViewController:DetailViewControllerDelegate{
+    func addPlace(place:Place){
+        let n = PlacesManager().addPlaceFavorite(place)
+        if(n == true){
+            print("====== GUARDADO=======")
+        }else{
+            print("====== NO GUARDADO=======")
+        }
+    }
 }

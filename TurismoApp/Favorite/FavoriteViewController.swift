@@ -10,7 +10,7 @@ import UIKit
 
 class FavoriteViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, URLSessionDelegate{
     
-    var placeManger = PlacesManager()
+    var placeManger:PlacesManager?
     @IBOutlet var collectionViewFavorite: UICollectionView!
     lazy var session: URLSession = {
         let configuration = URLSessionConfiguration.default
@@ -23,28 +23,27 @@ class FavoriteViewController: UIViewController, UICollectionViewDelegate, UIColl
         navigationItem.leftBarButtonItem = editButtonItem
         //Recuperamos las imagenes de internet
         //print(NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] as NSString)
-        print("VC FAVORITOS",placeManger.placeCount)
-        
+        print("View Did Load FAVORITOS")
+        placeManger = PlacesManager()
         recorrePlaces()
 }
     
    
     override func viewWillAppear(_ animated: Bool) {
-        //actualizar la lista
-        // 1. obtener el lugar para agregar
-        //2.actualizar interfaz
-        print(" Nuevo count favorites",placeManger.placeCount)
-        collectionViewFavorite.reloadData()
+        let actualiazar = DataFavorite.actualizar
+        if(actualiazar){
+            placeManger = PlacesManager()
+            recorrePlaces()
+            collectionViewFavorite.reloadData()
+        }else{
+            print("no hay datos por actualizar")
+        }
+        
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        //placeManger.addPlace(objPlace: Place(id: 8989, name: "victor", description: "hola desc", image: UIImage(imageLiteralResourceName: "morro"), geo: "geo", state: 1))
-        print(" Nuevo count favorites View did will dispar",placeManger.placeCount)
-        collectionViewFavorite.reloadData()
-    }
     
     func recorrePlaces(){
-        for (index,item) in placeManger.retrievePlaces()!.enumerated(){
+        for (index,item) in placeManger!.retrievePlaces()!.enumerated(){
             recuperarImagenesInternet(thumnailUrl: item.urlImage!,index: index)
         }
     }
@@ -56,7 +55,7 @@ class FavoriteViewController: UIViewController, UICollectionViewDelegate, UIColl
                 let data = try? Data(contentsOf: tempURL),
                 let image = UIImage(data: data) {
                 //print("favorite:",data)
-                self.placeManger.setImageToPlace(img: image, index: index)
+                self.placeManger!.setImageToPlace(img: image, index: index)
                 self.collectionViewFavorite.reloadData()
             }
         }
@@ -76,13 +75,13 @@ class FavoriteViewController: UIViewController, UICollectionViewDelegate, UIColl
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return placeManger.placeCount
+        return placeManger!.placeCount
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cellFavorite", for: indexPath) as! FavoriteCell
-        cell.namePlace.text = placeManger.getPlace(at: indexPath.item).name
-        cell.favoriteImage.image = placeManger.getPlace(at: indexPath.item).image
+        cell.namePlace.text = placeManger!.getPlace(at: indexPath.item).name
+        cell.favoriteImage.image = placeManger!.getPlace(at: indexPath.item).image
         cell.delegate = self
         return cell
     }
@@ -91,12 +90,15 @@ class FavoriteViewController: UIViewController, UICollectionViewDelegate, UIColl
         if let item = sender as? FavoriteCell,
             let indexPath = collectionViewFavorite.indexPath(for: item),
             let detailVC = segue.destination as? DetailViewController{
-            detailVC.place = placeManger.getPlace(at: indexPath.item)
+            detailVC.place = placeManger!.getPlace(at: indexPath.item)
+            detailVC.delegate = self
         }
     }
     
     
 }
+
+
 
 protocol FavoriteViewCellDelegate {
     func delete(cell:FavoriteCell)
@@ -105,9 +107,20 @@ protocol FavoriteViewCellDelegate {
 extension FavoriteViewController: FavoriteViewCellDelegate{
     func delete(cell: FavoriteCell) {
         if let indexPath = collectionViewFavorite?.indexPath(for: cell){
-            placeManger.removePlaceFavorite(at: indexPath.item)
+            placeManger!.removePlaceFavorite(at: indexPath.item)
             collectionViewFavorite?.deleteItems(at: [indexPath])
         }
         
+    }
+}
+
+extension FavoriteViewController:DetailViewControllerDelegate{
+    func addPlace(place:Place){
+        let n = placeManger!.addPlaceFavorite(place)
+        if(n == true){
+            print("====== GUARDADO=======")
+        }else{
+            print("====== NO GUARDADO=======")
+        }
     }
 }

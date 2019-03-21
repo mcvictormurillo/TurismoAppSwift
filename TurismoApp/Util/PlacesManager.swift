@@ -41,7 +41,11 @@ private var placesFile:URL = {
 class PlacesManager{
     
     lazy var places:[Place] = self.loadPlaces()
-    var placeCount:Int {return places.count}
+    var placeCount:Int{
+        return places.count
+    }
+    
+   
     
     //obtener un place de la lista de places
     func getPlace(at index:Int)->Place {
