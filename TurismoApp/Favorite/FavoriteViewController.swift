@@ -22,9 +22,27 @@ class FavoriteViewController: UIViewController, UICollectionViewDelegate, UIColl
         //Agregramos el boton de navegacion editBoton
         navigationItem.leftBarButtonItem = editButtonItem
         //Recuperamos las imagenes de internet
-        print(NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] as NSString)
+        //print(NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] as NSString)
+        print("VC FAVORITOS",placeManger.placeCount)
+        
         recorrePlaces()
 }
+    
+   
+    override func viewWillAppear(_ animated: Bool) {
+        //actualizar la lista
+        // 1. obtener el lugar para agregar
+        //2.actualizar interfaz
+        print(" Nuevo count favorites",placeManger.placeCount)
+        collectionViewFavorite.reloadData()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        //placeManger.addPlace(objPlace: Place(id: 8989, name: "victor", description: "hola desc", image: UIImage(imageLiteralResourceName: "morro"), geo: "geo", state: 1))
+        print(" Nuevo count favorites View did will dispar",placeManger.placeCount)
+        collectionViewFavorite.reloadData()
+    }
+    
     func recorrePlaces(){
         for (index,item) in placeManger.retrievePlaces()!.enumerated(){
             recuperarImagenesInternet(thumnailUrl: item.urlImage!,index: index)
@@ -37,7 +55,7 @@ class FavoriteViewController: UIViewController, UICollectionViewDelegate, UIColl
             if let tempURL = tempURL,
                 let data = try? Data(contentsOf: tempURL),
                 let image = UIImage(data: data) {
-                print("favorite:",data)
+                //print("favorite:",data)
                 self.placeManger.setImageToPlace(img: image, index: index)
                 self.collectionViewFavorite.reloadData()
             }

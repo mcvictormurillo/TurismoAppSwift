@@ -57,12 +57,17 @@ class PlacesManager{
         return retrievePlaces() ?? []
     }
     
-    
+    func addPlace(objPlace:Place){
+        places.append(objPlace)
+        print("Place Manger tiene ",placeCount)
+    }
     //agregar a favoritos
     func addPlaceFavorite(_ place:Place)->Bool {
         var place = place
         if SQLAddPlace(place: &place){
             places.append(place)
+            print("se agrego los places")
+            print("Place Manger tiene ",placeCount)
             return true
         }else{
             return false

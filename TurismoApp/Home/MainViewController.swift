@@ -13,7 +13,7 @@ class MainViewController: UIViewController,UICollectionViewDataSource, UICollect
     @IBOutlet var collectionViewMain: UICollectionView!
     
     @IBOutlet var floatButtonScanner: UIButton!
-    let jsonUrlString = "https://gist.githubusercontent.com/mcvictormurillo/9831d96513c9eaabdb37ba8ec8ba5963/raw/130c3394428247dc936c37c82c2f07c2be1709d2/place.json"
+    let jsonUrlString = "https://gist.githubusercontent.com/mcvictormurillo/9831d96513c9eaabdb37ba8ec8ba5963/raw/efd0b4b84368b2ff00c1b5a437cbf1a9ee88f7e6/place.json"
     
     lazy var places:[Place] = []
     
@@ -57,10 +57,10 @@ class MainViewController: UIViewController,UICollectionViewDataSource, UICollect
                 let placeFind = Place.init(json: item, urlJson: jsonUrlString)
                 self.places.append(placeFind)
                 self.loadImage(thumnailUrl: placeFind.urlImage! ,idPlace: index)
-                print("imagen",index, "lugar", placeFind.urlImage!)
+                //print("imagen",index, "lugar", placeFind.urlImage!)
                      
          }
-         print("numero de lugares", places.count)
+         //print("numero de lugares", places.count)
        
     }
 
@@ -70,7 +70,7 @@ class MainViewController: UIViewController,UICollectionViewDataSource, UICollect
             if let tempURL = tempURL,
                 let data = try? Data(contentsOf: tempURL),
                 let image = UIImage(data: data) {
-                print(data)
+                //print(data)
                 self.places[idPlace].image = image
                 //print(self.places[idPlace].image)
                 self.collectionViewMain.reloadData()

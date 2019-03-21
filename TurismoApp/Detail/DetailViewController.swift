@@ -18,14 +18,15 @@ class DetailViewController: UIViewController {
     var placeManager = PlacesManager()
     @IBOutlet var titleDetailLabel: UILabel!
     @IBOutlet var imageDetail: UIImageView!
-    @IBOutlet var descriptionTextView: UITextView!
+    @IBOutlet var descriptionText: UILabel!
+    
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         titleDetailLabel.text = place!.name
         imageDetail.image = place!.image
-        descriptionTextView.text = place!.description
+        descriptionText.text = place!.description
         
         //Bordes para el boton
         learnMoreButton.layer.borderColor =  UIColor.lightGray.cgColor
@@ -59,6 +60,10 @@ class DetailViewController: UIViewController {
     }
     
     
+}
+
+protocol DetailViewControllerDelegate{
+    func addPlace(place:Place)
 }
 
 
