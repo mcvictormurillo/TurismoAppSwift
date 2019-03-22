@@ -14,13 +14,13 @@ class MapViewController: UIViewController {
     var longitud:Double?
     let regionRadius: CLLocationDistance = 500
     
-    var namePlace:String="hola"
+    var namePlace:String?
     @IBOutlet var mapView: MKMapView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        guard let latitud = latitud, let longitud = longitud else{
+        guard let latitud = latitud, let longitud = longitud, let  namePlace = namePlace else{
             return
         }
         let initialLocation = CLLocationCoordinate2D(latitude: latitud, longitude: longitud)

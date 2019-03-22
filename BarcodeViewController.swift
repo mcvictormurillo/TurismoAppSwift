@@ -4,21 +4,32 @@
 //
 //  Created by Victor Manuel Murillo on 3/03/19.
 //  Copyright © 2019 Victor Manuel Murillo. All rights reserved.
-//
+//tableCell
 
 import UIKit
 import AVFoundation
 
-class BarcodeViewController: UIViewController {
+class BarcodeViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     var previewLayer: AVCaptureVideoPreviewLayer!
+    
+
+    @IBOutlet var tableView: UITableView!
+    @IBOutlet var namePlace: UITextField!
+    @IBOutlet var descriptio: UITextField!
+    @IBOutlet var urlPlace: UITextField!
+    var placeManager = PlacesManager()
+    var index:Int?
     var captureSession: AVCaptureSession = AVCaptureSession()
     var delegate:BarcodeViewControllerDelegate?
+    var sites:[String] = ["Iglesia","Museo","Restaurante","Parque","Otro"]
     
+   
     @IBOutlet var barcodeTextField: UITextField!
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        print("View Did Load Barcode")
         
         guard let cameraDevice = AVCaptureDevice.default(for: AVMediaType.video) else {
             failed();return }
@@ -49,6 +60,44 @@ class BarcodeViewController: UIViewController {
         previewLayer.frame = view.layer.frame
         previewLayer.videoGravity = AVLayerVideoGravity.resizeAspectFill
         view.layer.addSublayer(previewLayer)
+       
+    }
+    
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        print("numero de sitios",sites.count)
+        return sites.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "tableCell", for: indexPath)
+        cell.textLabel!.text = sites[indexPath.item]
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let cell = tableView.cellForRow(at: indexPath)
+        cell?.layer.borderColor = UIColor.lightGray.cgColor
+        cell?.layer.borderWidth = 0.5
+    }
+    
+    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+        let cell = tableView.cellForRow(at: indexPath)
+        cell?.layer.borderWidth = 0
+        index = indexPath.item
+    }
+    
+    @IBAction func btnSavePlace(_ sender: Any) {
+        let objPlace = Place(id: 1213, name: namePlace.text!, description: descriptio.text!, image: UIImage(imageLiteralResourceName: "imgDefault"), geo: "1.121212,+2.31212", state: 0, urlImage: urlPlace.text)
+        if(placeManager.addPlaceFavorite(objPlace)){
+            DataFavorite.actualizar = true
+        }else{
+            print("no se agrego place")
+        }
     }
     
     @IBAction func touchCancel(_ sender: UIBarButtonItem) {
@@ -70,6 +119,7 @@ class BarcodeViewController: UIViewController {
         //{(action) in self.dismiss(animated: true, completion: nil) }
         ac.addAction(alert)
         present(ac, animated: true, completion: nil)
+        
         
     }
     

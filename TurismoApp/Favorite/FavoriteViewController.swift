@@ -62,6 +62,7 @@ class FavoriteViewController: UIViewController, UICollectionViewDelegate, UIColl
         }
         task.resume()
     }
+    
     //Eliminar items
     override func setEditing(_ editing: Bool, animated: Bool) {
         super.setEditing(editing, animated: animated )
