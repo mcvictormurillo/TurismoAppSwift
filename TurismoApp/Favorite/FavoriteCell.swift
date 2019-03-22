@@ -12,22 +12,19 @@ class FavoriteCell: UICollectionViewCell {
     
     
     @IBOutlet var namePlace: UILabel!
-    @IBOutlet var favoriteImage: UIImageView!
-    @IBOutlet var deleteButtonBackgroundView: UIVisualEffectView!
-    var delegate: FavoriteViewCellDelegate?
-    var imageName:String! {
+    @IBOutlet var favoriteImage: UIImageView!{
         didSet {
-            //favoriteImage.image = UIImage(imageLiteralResourceName: imageName )
-            deleteButtonBackgroundView.layer.cornerRadius = deleteButtonBackgroundView.bounds.width/2.0
-            deleteButtonBackgroundView.layer.masksToBounds = true
-            deleteButtonBackgroundView.isHidden = !isEditing //lo ocultamos
+        //favoriteImage.image = UIImage(imageLiteralResourceName: imageName )
+        deleteButtonBackgroundView.layer.cornerRadius = deleteButtonBackgroundView.bounds.width/2.0
+        deleteButtonBackgroundView.layer.masksToBounds = true
+        deleteButtonBackgroundView.isHidden = !isEditing //lo ocultamos
         }
     }
-    
+    @IBOutlet var deleteButtonBackgroundView: UIVisualEffectView!
+    var delegate: FavoriteViewCellDelegate?
     var isEditing :Bool = false {
         didSet{
             deleteButtonBackgroundView.isHidden = !isEditing
-            
         }
     }
     

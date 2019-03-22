@@ -107,13 +107,3 @@ class MainViewController: UIViewController,UICollectionViewDataSource, UICollect
 
 
 
-extension MainViewController:DetailViewControllerDelegate{
-    func addPlace(place:Place){
-        let n = PlacesManager().addPlaceFavorite(place)
-        if(n == true){
-            print("====== GUARDADO=======")
-        }else{
-            print("====== NO GUARDADO=======")
-        }
-    }
-}

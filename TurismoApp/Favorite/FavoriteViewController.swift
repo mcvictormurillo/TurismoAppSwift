@@ -35,6 +35,7 @@ class FavoriteViewController: UIViewController, UICollectionViewDelegate, UIColl
             placeManger = PlacesManager()
             recorrePlaces()
             collectionViewFavorite.reloadData()
+            DataFavorite.actualizar = false
         }else{
             print("no hay datos por actualizar")
         }
@@ -43,7 +44,7 @@ class FavoriteViewController: UIViewController, UICollectionViewDelegate, UIColl
     
     
     func recorrePlaces(){
-        for (index,item) in placeManger!.retrievePlaces()!.enumerated(){
+        for (index,item) in placeManger!.places.enumerated(){
             recuperarImagenesInternet(thumnailUrl: item.urlImage!,index: index)
         }
     }
@@ -91,7 +92,7 @@ class FavoriteViewController: UIViewController, UICollectionViewDelegate, UIColl
             let indexPath = collectionViewFavorite.indexPath(for: item),
             let detailVC = segue.destination as? DetailViewController{
             detailVC.place = placeManger!.getPlace(at: indexPath.item)
-            detailVC.delegate = self
+            
         }
     }
     
@@ -114,13 +115,4 @@ extension FavoriteViewController: FavoriteViewCellDelegate{
     }
 }
 
-extension FavoriteViewController:DetailViewControllerDelegate{
-    func addPlace(place:Place){
-        let n = placeManger!.addPlaceFavorite(place)
-        if(n == true){
-            print("====== GUARDADO=======")
-        }else{
-            print("====== NO GUARDADO=======")
-        }
-    }
-}
+

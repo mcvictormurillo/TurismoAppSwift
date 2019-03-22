@@ -12,7 +12,6 @@ class DetailViewController: UIViewController {
 
     
     
-    var delegate:DetailViewControllerDelegate?
     @IBOutlet var learnMoreButton: UIButton!
     var place: Place?
     var placeManager = PlacesManager()
@@ -38,13 +37,7 @@ class DetailViewController: UIViewController {
     
 
     @IBAction func touchAddFavorite(_ sender: UIButton) {
-        //
-        print("metodo touch for favorite")
-        
-        //delegate?.addPlace(place: place!)
-        
-         if placeManager.addPlaceFavorite(place!){
-            
+      if placeManager.addPlaceFavorite(place!){
             AlertCustom().alert(controller: self, message: "Add to Favorite",second:1.2)
             DataFavorite.actualizar = true
         }
@@ -52,8 +45,7 @@ class DetailViewController: UIViewController {
             AlertCustom().alert(controller: self, message: " No Added to Favorite",second:1.2)
         }
         
-        
-    }
+}
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
    
@@ -70,9 +62,6 @@ class DetailViewController: UIViewController {
     
 }
 
-protocol DetailViewControllerDelegate{
-    func addPlace(place:Place)
-}
 
 
 
