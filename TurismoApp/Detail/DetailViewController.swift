@@ -32,7 +32,7 @@ class DetailViewController: UIViewController {
         learnMoreButton.layer.borderWidth = 0.7
         learnMoreButton.layer.cornerRadius = 5
         
-        
+        //print(place!)
     }
     
 
@@ -50,12 +50,12 @@ class DetailViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
    
        if let mapVC = segue.destination as? MapViewController{
-            var latLong = place!.geo.split(separator: ",", maxSplits: 2, omittingEmptySubsequences: true)
+            var latLong = place!.geo.split(separator: " ", maxSplits: 2, omittingEmptySubsequences: true)
             mapVC.namePlace = place!.name
             mapVC.latitud = Double(latLong[0])
             mapVC.longitud = Double(latLong[1])
         
-        
+       
        
         }
     }

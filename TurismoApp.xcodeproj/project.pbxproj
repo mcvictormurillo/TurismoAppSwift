@@ -85,6 +85,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F00BA091224935BF00BEA4A2 /* Barcode */ = {
+			isa = PBXGroup;
+			children = (
+				F079AEE7222C91B300F02829 /* BarcodeViewController.swift */,
+			);
+			path = Barcode;
+			sourceTree = "<group>";
+		};
 		F0386951223EF2D2007BE5C7 /* prueba */ = {
 			isa = PBXGroup;
 			children = (
@@ -139,7 +147,6 @@
 		F0D26F1D221F347300AA72D4 = {
 			isa = PBXGroup;
 			children = (
-				F079AEE7222C91B300F02829 /* BarcodeViewController.swift */,
 				F0D26F28221F347300AA72D4 /* TurismoApp */,
 				F0D26F27221F347300AA72D4 /* Products */,
 				F0EC4646223597B5002AF0CC /* Frameworks */,
@@ -157,6 +164,7 @@
 		F0D26F28221F347300AA72D4 /* TurismoApp */ = {
 			isa = PBXGroup;
 			children = (
+				F00BA091224935BF00BEA4A2 /* Barcode */,
 				F0386954223EFBA6007BE5C7 /* Home */,
 				F0386951223EF2D2007BE5C7 /* prueba */,
 				F0995788223C4465007F5B50 /* Map */,

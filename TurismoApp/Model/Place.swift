@@ -60,9 +60,9 @@ struct Place{
         self.name = json["name"] as? String ?? "Anonimo"
         self.description = json["description"] as? String ?? "Anonima"
         self.image = UIImage(imageLiteralResourceName: "imgDefault")
-        //let urlCompleta = (json["img"] as? String)  
-        self.urlImage = json["img"] as? String ?? ""//urlJson +
-        self.geo = json["geo"] as? String ?? ""
+        let urlCompleta = json["img"] as? String ?? ""
+        self.urlImage = urlJson + urlCompleta
+        self.geo = json["cord"] as? String ?? ""
         self.state = 0//json["state"] as? Int ?? 0
         
     }

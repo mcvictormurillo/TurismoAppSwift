@@ -92,16 +92,42 @@ class BarcodeViewController: UIViewController, UITableViewDataSource, UITableVie
     }
     
     @IBAction func btnSavePlace(_ sender: Any) {
-        let objPlace = Place(id: 1213, name: namePlace.text!, description: descriptio.text!, image: UIImage(imageLiteralResourceName: "imgDefault"), geo: "1.121212,+2.31212", state: 0, urlImage: urlPlace.text)
+        
+        guard let nombre = namePlace.text, let description = descriptio.text, let url = urlPlace.text else{
+            //mostrar la alert
+            print("Datos incorrectos")
+            return
+            
+        }
+        let id = Int(arc4random_uniform(UInt32(20000)))  //Int(arc4random())
+        print("id es:", id)
+        let objPlace = Place(id: id, name: nombre, description: description , image: UIImage(imageLiteralResourceName: "imgDefault"), geo: "1.121212,+2.31212", state: 0, urlImage:url )
+        
         if(placeManager.addPlaceFavorite(objPlace)){
             DataFavorite.actualizar = true
+            //mostrar la alerta
+            dismissMe()
+            AlertCustom().alert(controller: self, message: " Add to Favorite",second:1.2)
         }else{
-            print("no se agrego place")
+            
+             AlertCustom().alert(controller: self, message: " No Added to Favorite",second:1.2)
+             print("no se agrego place")
+
         }
+        
+ 
     }
     
     @IBAction func touchCancel(_ sender: UIBarButtonItem) {
-        dismiss(animated: true, completion: nil)
+        dismissMe()
+    }
+    
+    func dismissMe() {
+        if presentingViewController != nil { // was presented via modal segue
+            dismiss(animated: true, completion: nil) } else {
+            // was pushed onto navigation stack
+            navigationController!.popViewController(animated: true)
+        }
     }
     
     

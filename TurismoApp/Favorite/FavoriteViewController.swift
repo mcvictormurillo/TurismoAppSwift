@@ -23,7 +23,7 @@ class FavoriteViewController: UIViewController, UICollectionViewDelegate, UIColl
         navigationItem.leftBarButtonItem = editButtonItem
         //Recuperamos las imagenes de internet
         //print(NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] as NSString)
-        print("View Did Load FAVORITOS")
+        //print("View Did Load FAVORITOS")
         placeManger = PlacesManager()
         recorrePlaces()
 }
@@ -109,7 +109,12 @@ protocol FavoriteViewCellDelegate {
 extension FavoriteViewController: FavoriteViewCellDelegate{
     func delete(cell: FavoriteCell) {
         if let indexPath = collectionViewFavorite?.indexPath(for: cell){
-            placeManger!.removePlaceFavorite(at: indexPath.item)
+            let eliminado = placeManger!.removePlaceFavorite(at: indexPath.item)
+            if(eliminado){
+                print("ELIMINADO DE FAVORITOS")
+            }else{
+                print("FALLO EN ELIMINAR")
+            }
             collectionViewFavorite?.deleteItems(at: [indexPath])
         }
         

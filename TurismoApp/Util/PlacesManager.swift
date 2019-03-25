@@ -80,9 +80,11 @@ class PlacesManager{
     }
     
     //eliminar de favoritos
-    func removePlaceFavorite(at index:Int){
+    func removePlaceFavorite(at index:Int)->Bool{
         let placeToRemove = places.remove(at: index)
-        SQLRemovePlace(place: placeToRemove)
+        return SQLRemovePlace(place: placeToRemove)
+
+        
     }
     
     //abrir BD
@@ -123,7 +125,7 @@ class PlacesManager{
     func SQLAddPlace(place:inout Place)->Bool {
         guard let db = getOpenDB() else { return false }
         do {
-            try db.executeUpdate("insert into places (id, name, description, geo, img, state) values(?, ?, ?, ?, ?, ?)", values: [(place.id + 12345), place.name + "bd", place.description, place.geo, place.urlImage!,1]
+            try db.executeUpdate("insert into places (id, name, description, geo, img, state) values(?, ?, ?, ?, ?, ?)", values: [(place.id), place.name, place.description, place.geo, place.urlImage!,1]
             )
             
         } catch {
@@ -137,17 +139,21 @@ class PlacesManager{
     
     
     //remover un places de la bd, es decir de fvaoritos
-    func SQLRemovePlace(place:Place) {
-        guard let db = getOpenDB() else { return }
+    func SQLRemovePlace(place:Place)->Bool {
+        var bandera = false
+        guard let db = getOpenDB() else { return false}
         do {
             try db.executeUpdate(
                 "delete from places where id = ?",
                 values: [place.id]
+                
             )
+            bandera = true
         } catch {
             print("failed: \(error.localizedDescription)")
         }
         db.close()
+        return bandera
     }
     
     //actualizar
