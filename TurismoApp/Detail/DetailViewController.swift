@@ -50,7 +50,7 @@ class DetailViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
    
        if let mapVC = segue.destination as? MapViewController{
-            var latLong = place!.geo.split(separator: " ", maxSplits: 2, omittingEmptySubsequences: true)
+        var latLong = place!.geo.split(separator: ",", maxSplits: 2, omittingEmptySubsequences: true)
             mapVC.namePlace = place!.name
             mapVC.latitud = Double(latLong[0])
             mapVC.longitud = Double(latLong[1])

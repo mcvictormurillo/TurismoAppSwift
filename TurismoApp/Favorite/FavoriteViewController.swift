@@ -84,6 +84,8 @@ class FavoriteViewController: UIViewController, UICollectionViewDelegate, UIColl
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cellFavorite", for: indexPath) as! FavoriteCell
         cell.namePlace.text = placeManger!.getPlace(at: indexPath.item).name
         cell.favoriteImage.image = placeManger!.getPlace(at: indexPath.item).image
+        print("favoritos")
+        print(placeManger!.getPlace(at: indexPath.item).image)
         cell.delegate = self
         return cell
     }

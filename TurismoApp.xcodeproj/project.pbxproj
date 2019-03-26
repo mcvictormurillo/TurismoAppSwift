@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		F00ACD1D2242C7EF00103A1D /* PlaceMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00ACD1C2242C7EF00103A1D /* PlaceMap.swift */; };
+		F00BA09F224999CB00BEA4A2 /* PlaceService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00BA09E224999CB00BEA4A2 /* PlaceService.swift */; };
 		F00E64DB223F0177005E5247 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00E64DA223F0177005E5247 /* MainViewController.swift */; };
 		F00E64DD223F023A005E5247 /* MainCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00E64DC223F023A005E5247 /* MainCollectionViewCell.swift */; };
 		F01CC8FF22444DD00090F18C /* DataFavorite.swift in Sources */ = {isa = PBXBuildFile; fileRef = F01CC8FE22444DD00090F18C /* DataFavorite.swift */; };
@@ -20,6 +21,7 @@
 		F07F387E22287A9900476778 /* Place.swift in Sources */ = {isa = PBXBuildFile; fileRef = F07F387D22287A9900476778 /* Place.swift */; };
 		F099578A223C4571007F5B50 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0995789223C4571007F5B50 /* MapViewController.swift */; };
 		F0B5E27B22346AEC005CABB3 /* PlacesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0B5E27A22346AEC005CABB3 /* PlacesManager.swift */; };
+		F0B804C72249E250006AA82A /* PlaceManagerServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0B804C62249E250006AA82A /* PlaceManagerServer.swift */; };
 		F0D26F2A221F347300AA72D4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0D26F29221F347300AA72D4 /* AppDelegate.swift */; };
 		F0D26F2F221F347300AA72D4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F0D26F2D221F347300AA72D4 /* Main.storyboard */; };
 		F0D26F31221F347500AA72D4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F0D26F30221F347500AA72D4 /* Assets.xcassets */; };
@@ -37,6 +39,7 @@
 
 /* Begin PBXFileReference section */
 		F00ACD1C2242C7EF00103A1D /* PlaceMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceMap.swift; sourceTree = "<group>"; };
+		F00BA09E224999CB00BEA4A2 /* PlaceService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceService.swift; sourceTree = "<group>"; };
 		F00E64DA223F0177005E5247 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		F00E64DC223F023A005E5247 /* MainCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCollectionViewCell.swift; sourceTree = "<group>"; };
 		F01CC8FE22444DD00090F18C /* DataFavorite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataFavorite.swift; sourceTree = "<group>"; };
@@ -49,6 +52,7 @@
 		F07F387D22287A9900476778 /* Place.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Place.swift; sourceTree = "<group>"; };
 		F0995789223C4571007F5B50 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		F0B5E27A22346AEC005CABB3 /* PlacesManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlacesManager.swift; sourceTree = "<group>"; };
+		F0B804C62249E250006AA82A /* PlaceManagerServer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceManagerServer.swift; sourceTree = "<group>"; };
 		F0D26F26221F347300AA72D4 /* TurismoApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TurismoApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F0D26F29221F347300AA72D4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F0D26F2E221F347300AA72D4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -91,6 +95,14 @@
 				F079AEE7222C91B300F02829 /* BarcodeViewController.swift */,
 			);
 			path = Barcode;
+			sourceTree = "<group>";
+		};
+		F00BA09B2249999900BEA4A2 /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+				F00BA09E224999CB00BEA4A2 /* PlaceService.swift */,
+			);
+			path = "New Group";
 			sourceTree = "<group>";
 		};
 		F0386951223EF2D2007BE5C7 /* prueba */ = {
@@ -164,6 +176,7 @@
 		F0D26F28221F347300AA72D4 /* TurismoApp */ = {
 			isa = PBXGroup;
 			children = (
+				F00BA09B2249999900BEA4A2 /* New Group */,
 				F00BA091224935BF00BEA4A2 /* Barcode */,
 				F0386954223EFBA6007BE5C7 /* Home */,
 				F0386951223EF2D2007BE5C7 /* prueba */,
@@ -226,6 +239,7 @@
 				F0B5E27A22346AEC005CABB3 /* PlacesManager.swift */,
 				F04C2D0F2236D01700294247 /* AlertCustom.swift */,
 				F01CC8FE22444DD00090F18C /* DataFavorite.swift */,
+				F0B804C62249E250006AA82A /* PlaceManagerServer.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -309,7 +323,9 @@
 				F07F387E22287A9900476778 /* Place.swift in Sources */,
 				F0EC467822359923002AF0CC /* FMDatabaseQueue.m in Sources */,
 				F00E64DB223F0177005E5247 /* MainViewController.swift in Sources */,
+				F0B804C72249E250006AA82A /* PlaceManagerServer.swift in Sources */,
 				F0EC467922359923002AF0CC /* FMResultSet.m in Sources */,
+				F00BA09F224999CB00BEA4A2 /* PlaceService.swift in Sources */,
 				F0E5A190222078240093CADF /* FavoriteViewController.swift in Sources */,
 				F079AEE6222C761200F02829 /* FavoriteCell.swift in Sources */,
 				F0386950223EF2C6007BE5C7 /* PruebaCollectionViewCell.swift in Sources */,

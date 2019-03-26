@@ -26,7 +26,6 @@ class BarcodeViewController: UIViewController, UITableViewDataSource, UITableVie
    
     @IBOutlet var barcodeTextField: UITextField!
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         print("View Did Load Barcode")
