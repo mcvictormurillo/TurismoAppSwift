@@ -12,7 +12,7 @@ class MainViewController: UIViewController,UICollectionViewDataSource, UICollect
 
     @IBOutlet var collectionViewMain: UICollectionView!
     @IBOutlet var floatButtonScanner: UIButton!
-    let jsonUrlString = "https://gist.githubusercontent.com/mcvictormurillo/9831d96513c9eaabdb37ba8ec8ba5963/raw/efd0b4b84368b2ff00c1b5a437cbf1a9ee88f7e6/place.json"
+    let jsonUrlString = "http://192.168.43.103:5000/"
     
     var placesServices:PlaceServiceProtocol = PlaceService()
     lazy var places:[Place] = []

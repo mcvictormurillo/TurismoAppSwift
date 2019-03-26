@@ -103,10 +103,9 @@ class BarcodeViewController: UIViewController, UITableViewDataSource, UITableVie
         let objPlace = Place(id: id, name: nombre, description: description , image: UIImage(imageLiteralResourceName: "imgDefault"), geo: "1.121212,+2.31212", state: 0, urlImage:url )
         
         if(placeManager.addPlaceFavorite(objPlace)){
+            navigationController!.popViewController(animated: true)
+            //AlertCustom().alert(controller: self, message: " Add to Favorite",second:0.5)
             DataFavorite.actualizar = true
-            //mostrar la alerta
-            dismissMe()
-            AlertCustom().alert(controller: self, message: " Add to Favorite",second:1.2)
         }else{
             
              AlertCustom().alert(controller: self, message: " No Added to Favorite",second:1.2)
@@ -118,7 +117,7 @@ class BarcodeViewController: UIViewController, UITableViewDataSource, UITableVie
     }
     
     @IBAction func touchCancel(_ sender: UIBarButtonItem) {
-        dismissMe()
+        navigationController!.popViewController(animated: true)
     }
     
     func dismissMe() {
