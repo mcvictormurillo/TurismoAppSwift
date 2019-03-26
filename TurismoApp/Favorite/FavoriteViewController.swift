@@ -12,20 +12,16 @@ class FavoriteViewController: UIViewController, UICollectionViewDelegate, UIColl
     
     var placeManger:PlacesManager?
     @IBOutlet var collectionViewFavorite: UICollectionView!
-    lazy var session: URLSession = {
-        let configuration = URLSessionConfiguration.default
-        return URLSession(configuration: configuration, delegate: self, delegateQueue:OperationQueue.main)
-    }()
+    var placesServices:PlaceServiceProtocol = PlaceService()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         //Agregramos el boton de navegacion editBoton
         navigationItem.leftBarButtonItem = editButtonItem
         //Recuperamos las imagenes de internet
-        //print(NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] as NSString)
-        //print("View Did Load FAVORITOS")
+        print(NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] as NSString)
         placeManger = PlacesManager()
-        recorrePlaces()
+        agregarImg()
 }
     
    
@@ -33,7 +29,7 @@ class FavoriteViewController: UIViewController, UICollectionViewDelegate, UIColl
         let actualiazar = DataFavorite.actualizar
         if(actualiazar){
             placeManger = PlacesManager()
-            recorrePlaces()
+            agregarImg()
             collectionViewFavorite.reloadData()
             DataFavorite.actualizar = false
         }else{
@@ -43,25 +39,27 @@ class FavoriteViewController: UIViewController, UICollectionViewDelegate, UIColl
     }
     
     
-    func recorrePlaces(){
-        for (index,item) in placeManger!.places.enumerated(){
-            recuperarImagenesInternet(thumnailUrl: item.urlImage!,index: index)
-        }
-    }
-    
-    func recuperarImagenesInternet(thumnailUrl:String, index:Int){
-        guard let url = URL(string: thumnailUrl) else {return}
-        let task = session.downloadTask(with: url) { (tempURL, response, error) in
-            if let tempURL = tempURL,
-                let data = try? Data(contentsOf: tempURL),
-                let image = UIImage(data: data) {
-                //print("favorite:",data)
-                self.placeManger!.setImageToPlace(img: image, index: index)
-                self.collectionViewFavorite.reloadData()
+  
+    func agregarImg() {
+        if(placeManger!.placeCount>0){
+            for index in 0...(placeManger!.placeCount - 1){
+                placesServices.getImagePlace(with: placeManger!.getPlace(at: index).urlImage!) {
+                    (img, error) in
+                    if error != nil { // Deal with error here
+                        print("error")
+                        return
+                    }else if let img = img{
+                        self.placeManger!.setImageToPlace(img: img, index: index)
+                    }
+                    self.collectionViewFavorite.reloadData()
+                }
+                
             }
         }
-        task.resume()
+        
     }
+    
+
     
     //Eliminar items
     override func setEditing(_ editing: Bool, animated: Bool) {

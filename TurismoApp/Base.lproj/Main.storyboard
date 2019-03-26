@@ -72,7 +72,7 @@
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstItem="yp4-li-JCi" firstAttribute="top" secondItem="1Np-UE-WNx" secondAttribute="bottom" constant="6" id="4zd-ds-vZb"/>
+                                    <constraint firstItem="yp4-li-JCi" firstAttribute="top" secondItem="1Np-UE-WNx" secondAttribute="bottom" id="4zd-ds-vZb"/>
                                     <constraint firstAttribute="trailing" secondItem="yp4-li-JCi" secondAttribute="trailing" id="7dS-yK-KiQ"/>
                                     <constraint firstItem="XRS-VD-ex5" firstAttribute="leading" secondItem="1rz-eM-GLe" secondAttribute="leading" constant="14" id="8AD-Do-wxr"/>
                                     <constraint firstAttribute="trailing" secondItem="1Np-UE-WNx" secondAttribute="trailing" id="Bu8-DS-xNv"/>

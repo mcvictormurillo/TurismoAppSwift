@@ -98,7 +98,7 @@ class BarcodeViewController: UIViewController, UITableViewDataSource, UITableVie
             return
             
         }
-        let id = Int(arc4random_uniform(UInt32(20000)))  //Int(arc4random())
+        let id = Int(arc4random_uniform(UInt32(1000)))  //Int(arc4random())
         print("id es:", id)
         let objPlace = Place(id: id, name: nombre, description: description , image: UIImage(imageLiteralResourceName: "imgDefault"), geo: "1.121212,+2.31212", state: 0, urlImage:url )
         
