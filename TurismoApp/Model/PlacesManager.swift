@@ -83,8 +83,6 @@ class PlacesManager{
     func removePlaceFavorite(at index:Int)->Bool{
         let placeToRemove = places.remove(at: index)
         return SQLRemovePlace(place: placeToRemove)
-
-        
     }
     
     //abrir BD
@@ -125,7 +123,7 @@ class PlacesManager{
     func SQLAddPlace(place:inout Place)->Bool {
         guard let db = getOpenDB() else { return false }
         do {
-            try db.executeUpdate("insert into places (id, name, description, geo, img, state) values(?, ?, ?, ?, ?, ?)", values: [(place.id), place.name, place.description, place.geo, place.urlImage!,1]
+            try db.executeUpdate("insert into places (id, name, description, geo, img, state) values(?, ?, ?, ?, ?, ?)", values: [place.id, place.name, place.description, place.geo, place.urlImage!,1]
             )
             
         } catch {

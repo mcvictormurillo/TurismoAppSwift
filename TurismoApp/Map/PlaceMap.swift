@@ -9,6 +9,7 @@
 import MapKit
 import UIKit
 
+
 class PlaceMap: NSObject, MKAnnotation {
     var title: String?
     var coordinate: CLLocationCoordinate2D

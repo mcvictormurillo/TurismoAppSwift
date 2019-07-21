@@ -57,6 +57,7 @@ struct Place{
     
     init(json: [String:Any],urlJson:String){
         self.id = json["id"] as? Int ?? 0
+        //self.id = Int(self.id)
         self.name = json["name"] as? String ?? "Anonimo"
         self.description = json["description"] as? String ?? "Anonima"
         self.image = UIImage(imageLiteralResourceName: "imgDefault")

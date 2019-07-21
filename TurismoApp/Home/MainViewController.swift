@@ -12,18 +12,13 @@ class MainViewController: UIViewController,UICollectionViewDataSource, UICollect
 
     @IBOutlet var collectionViewMain: UICollectionView!
     @IBOutlet var floatButtonScanner: UIButton!
-    let jsonUrlString = "http://192.168.43.103:5000/"
+    let jsonUrlString = "https://api.myjson.com/bins/gaenp"
     
-    var placesServices:PlaceServiceProtocol = PlaceService()
-    lazy var places:[Place] = []
+    var placesServices:PartidoServiceProtocol = PartidoService()
+    lazy var places:[Partido] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let layout = UICollectionViewFlowLayout()
-        layout.sectionInset = UIEdgeInsets.init(top: 10, left: 5, bottom: 0, right: 5)
-        layout.itemSize = CGSize(width: (self.collectionViewMain.frame.size.width - 20)/2 , height: (self.collectionViewMain.frame.size.height)/3)
-        layout.minimumInteritemSpacing = 5 //3
-        collectionViewMain.collectionViewLayout = layout
         floatButtonScanner.layer.cornerRadius = floatButtonScanner.frame.height/2 
         loadPlaces()
 }
@@ -35,6 +30,8 @@ class MainViewController: UIViewController,UICollectionViewDataSource, UICollect
                 print("error")
                 return
             }else if let listPlaces = listPlaces{
+                print("=======================================")
+                print(listPlaces)
                 self.places = listPlaces
                 self.agregarImg()
             }
@@ -43,15 +40,25 @@ class MainViewController: UIViewController,UICollectionViewDataSource, UICollect
     
     func agregarImg() {
         for index in 0...(places.count-1){
-            placesServices.getImagePlace(with: places[index].urlImage!) {
+            placesServices.getImagePlace(with: places[index].urlFlagTeam1!) {
                 (img, error) in
                 if error != nil { // Deal with error here
                     print("error")
                     return
                 }else if let img = img{
-                    self.places[index].image = img
+                    self.places[index].flagTeam1 = img
                 }
-               self.collectionViewMain.reloadData()
+               //self.collectionViewMain.reloadData()
+            }
+            placesServices.getImagePlace(with: places[index].urlFlagTeam2!) {
+                (img, error) in
+                if error != nil { // Deal with error here
+                    print("error")
+                    return
+                }else if let img = img{
+                    self.places[index].flagTeam2 = img
+                }
+                self.collectionViewMain.reloadData()
             }
             
         }
@@ -65,9 +72,12 @@ class MainViewController: UIViewController,UICollectionViewDataSource, UICollect
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionViewMain.dequeueReusableCell(withReuseIdentifier: "celdaMain", for: indexPath) as! MainCollectionViewCell
-        cell.tituloTextField.text = places[indexPath.item].name
-        cell.imgPlace.image = places[indexPath.item].image!
-        print("para cada imagen",places[indexPath.item].image!)
+        cell.team1.text = places[indexPath.item].team1
+        cell.team2.text = places[indexPath.item].team2
+        cell.score.text = places[indexPath.item].score
+        cell.imgTeam1.image = places[indexPath.item].flagTeam1
+        cell.imgTeam2.image = places[indexPath.item].flagTeam2
+        print("para cada imagen",places[indexPath.item].flagTeam1)
         return cell
     }
     
@@ -75,7 +85,7 @@ class MainViewController: UIViewController,UICollectionViewDataSource, UICollect
             if let item = sender as? UICollectionViewCell,
             let indexPath = collectionViewMain.indexPath(for: item),
             let detailVC = segue.destination as? DetailViewController{
-            detailVC.place = places[indexPath.item]
+           // detailVC.place = places[indexPath.item]
         }
 }
 

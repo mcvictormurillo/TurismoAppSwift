@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class PlaceService:NSObject,URLSessionDelegate,PlaceServiceProtocol{
+class PartidoService:NSObject,URLSessionDelegate,PartidoServiceProtocol{
     
     func cancel() {}
     
@@ -17,9 +17,9 @@ class PlaceService:NSObject,URLSessionDelegate,PlaceServiceProtocol{
         let configuration = URLSessionConfiguration.default
         return URLSession(configuration: configuration,delegate: self, delegateQueue:OperationQueue.main)
     }()
-
     
-    func getPlace(with urlServer: String,completionHandler: @escaping ([Place]?, Error?) -> Void){
+    
+    func getPlace(with urlServer: String,completionHandler: @escaping ([Partido]?, Error?) -> Void){
         guard let url = URL(string: urlServer)else {return}
         let dataTask = session.dataTask(with: url) {(data, response, error) in
             if let error = error {
@@ -32,8 +32,8 @@ class PlaceService:NSObject,URLSessionDelegate,PlaceServiceProtocol{
         dataTask.resume()
     }
     
-
-    private func parseJSON(data: Data,url:String, completionHandler:@escaping ([Place]?, Error?) -> Void) {
+    
+    private func parseJSON(data: Data,url:String, completionHandler:@escaping ([Partido]?, Error?) -> Void) {
         do{
             guard let json = try  JSONSerialization.jsonObject(with: data, options: .mutableContainers ) as?  [[String:Any]] else{
                 print("sin acceso")
@@ -50,13 +50,13 @@ class PlaceService:NSObject,URLSessionDelegate,PlaceServiceProtocol{
             return
         }
         
-}
-        
+    }
     
-    func recorreJson(lista:[[String:Any]],url:String,completionHandler: @escaping ([Place]?,Error?) -> Void){
-        var misplaces:[Place] = []
+    
+    func recorreJson(lista:[[String:Any]],url:String,completionHandler: @escaping ([Partido]?,Error?) -> Void){
+        var misplaces:[Partido] = []
         for item in lista{
-            var placeFind = Place.init(json: item, urlJson: url)
+            var placeFind = Partido.init(json: item, urlJson: url)
             //placeFind.image = loadCover(urlImage: placeFind.urlImage!)
             misplaces.append(placeFind)
         }
@@ -65,7 +65,7 @@ class PlaceService:NSObject,URLSessionDelegate,PlaceServiceProtocol{
     
     
     func  getImagePlace(with urlServer: String,completionHandler: @escaping (UIImage?, Error?) -> Void){
-            guard let url = URL(string: urlServer) else {
+        guard let url = URL(string: urlServer) else {
             print("no funciona la url")
             return}
         var img:UIImage = UIImage(imageLiteralResourceName: "morro")
@@ -73,32 +73,33 @@ class PlaceService:NSObject,URLSessionDelegate,PlaceServiceProtocol{
             if let tempURL = tempURL,
                 let data = try? Data(contentsOf: tempURL),
                 let image = UIImage(data: data) {
-                  img = image
-                    print("si funciona",img)
+                img = image
+                print("si funciona",img)
             }
-           completionHandler(img,nil)
+            completionHandler(img,nil)
         }
         
         task.resume()
     }
-
     
-
- 
     
-
-
+    
+    
+    
+    
+    
 }
 
 
 
 
-protocol PlaceServiceProtocol {
+protocol PartidoServiceProtocol {
     func getPlace(with urlServer: String,
-                 completionHandler: @escaping ([Place]?, Error?) -> Void)
+                  completionHandler: @escaping ([Partido]?, Error?) -> Void)
     
     func cancel()
     
     func getImagePlace(with urlServer: String,
-    completionHandler: @escaping (UIImage?, Error?) -> Void)
+                       completionHandler: @escaping (UIImage?, Error?) -> Void)
 }
+

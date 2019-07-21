@@ -10,6 +10,11 @@ import UIKit
 
 class MainCollectionViewCell: UICollectionViewCell {
     
-    @IBOutlet var imgPlace: UIImageView!
-    @IBOutlet var tituloTextField: UILabel!
+    @IBOutlet var team2: UILabel!
+    @IBOutlet var imgTeam2: UIImageView!
+    
+    @IBOutlet var score: UILabel!
+    @IBOutlet var team1: UILabel!
+    
+    @IBOutlet var imgTeam1: UIImageView!
 }
