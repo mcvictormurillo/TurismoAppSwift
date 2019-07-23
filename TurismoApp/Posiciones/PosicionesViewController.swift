@@ -118,8 +118,6 @@ class PosicionesViewController:  UIViewController,UICollectionViewDataSource, UI
         cell.imgPos2.image = posiciones[indexPath.item].imgPos2
         cell.imgPos3.image = posiciones[indexPath.item].imgPos3
         cell.imgPos4.image = posiciones[indexPath.item].imgPos4
-        
-        
         return cell
     }
     

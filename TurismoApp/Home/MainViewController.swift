@@ -74,13 +74,8 @@ class MainViewController: UIViewController,UICollectionViewDataSource, UICollect
         return cell
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-            if let item = sender as? UICollectionViewCell,
-            let indexPath = collectionViewMain.indexPath(for: item),
-            let detailVC = segue.destination as? DetailViewController{
-           // detailVC.place = places[indexPath.item]
-        }
-}
+    
+    
 
 
 

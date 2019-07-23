@@ -11,9 +11,10 @@ import UIKit
 internal struct estructura {
     static let team1 = "team1"
     static let team2 = "team2"
+    static let score = "score"
     static let dateMatch = "dateMatch"
-    static let flagTeam1 = "flagTeam1"
-    static let flagTeam2 = "flagTeam2"
+    static let urlFlagTeam1 = "urlFlagTeam1"
+    static let urlFlagTeam2 = "urlFlagTeam2"
 }
 
 struct Partido{
@@ -40,6 +41,20 @@ struct Partido{
         self.urlFlagTeam2 = urlFlagTeam2
     }
    
+    init?(rs:FMResultSet) {
+        
+        //let id = rs.int(forColumn: "id")
+        let team1 = rs.string(forColumn: estructura.team1)
+        let team2 = rs.string(forColumn: estructura.team2)
+        let score = rs.string(forColumn: estructura.score)
+        let dateMatch = rs.string(forColumn: estructura.dateMatch)
+        let urlFlagTeam1 = rs.string(forColumn: estructura.urlFlagTeam1)
+        let urlFlagTeam2 = rs.string(forColumn: estructura.urlFlagTeam2)
+        let image = UIImage(imageLiteralResourceName: "imgDefault")
+        self.init(team1: team1!, team2: team2!, score: score!, dateMatch: dateMatch!, flagTeam1: image, flagTeam2: image, urlFlagTeam1: urlFlagTeam1!, urlFlagTeam2: urlFlagTeam2!)
+      
+    }
+    
     
     init(json: [String:Any],urlJson:String){
         self.team1 = json["team1"] as? String ?? "Equipo 1"
