@@ -1,10 +1,3 @@
-//
-//  MainViewController.swift
-//  TurismoApp
-//
-//  Created by Victor Manuel Murillo on 17/03/19.
-//  Copyright © 2019 Victor Manuel Murillo. All rights reserved.
-//
 
 import UIKit
 
@@ -30,8 +23,8 @@ class MainViewController: UIViewController,UICollectionViewDataSource, UICollect
                 print("error")
                 return
             }else if let listPlaces = listPlaces{
-                print("=======================================")
-                print(listPlaces)
+                //print("=======================================")
+                //print(listPlaces)
                 self.places = listPlaces
                 self.agregarImg()
             }

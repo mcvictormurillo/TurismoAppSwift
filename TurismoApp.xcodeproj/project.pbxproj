@@ -34,6 +34,10 @@
 		F0EC467C22359923002AF0CC /* FMDatabasePool.m in Sources */ = {isa = PBXBuildFile; fileRef = F0EC467422359920002AF0CC /* FMDatabasePool.m */; };
 		F0EDC7E222E4E866005220D6 /* Partido.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0EDC7E122E4E866005220D6 /* Partido.swift */; };
 		F0EDC7E422E4EF20005220D6 /* PartidoService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0EDC7E322E4EF20005220D6 /* PartidoService.swift */; };
+		F0FC710822E6BF6100110143 /* PosicionesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0FC710722E6BF6100110143 /* PosicionesViewController.swift */; };
+		F0FC710A22E6BFF500110143 /* PosicionesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0FC710922E6BFF500110143 /* PosicionesService.swift */; };
+		F0FC710C22E6C04A00110143 /* Posicion.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0FC710B22E6C04A00110143 /* Posicion.swift */; };
+		F0FC710E22E6D37000110143 /* PosicionCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0FC710D22E6D37000110143 /* PosicionCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -73,6 +77,10 @@
 		F0EC467722359922002AF0CC /* FMDatabasePool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabasePool.h; sourceTree = "<group>"; };
 		F0EDC7E122E4E866005220D6 /* Partido.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Partido.swift; sourceTree = "<group>"; };
 		F0EDC7E322E4EF20005220D6 /* PartidoService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PartidoService.swift; sourceTree = "<group>"; };
+		F0FC710722E6BF6100110143 /* PosicionesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PosicionesViewController.swift; sourceTree = "<group>"; };
+		F0FC710922E6BFF500110143 /* PosicionesService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PosicionesService.swift; sourceTree = "<group>"; };
+		F0FC710B22E6C04A00110143 /* Posicion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Posicion.swift; sourceTree = "<group>"; };
+		F0FC710D22E6D37000110143 /* PosicionCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PosicionCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -142,6 +150,7 @@
 			children = (
 				F00BA09E224999CB00BEA4A2 /* PlaceService.swift */,
 				F0EDC7E322E4EF20005220D6 /* PartidoService.swift */,
+				F0FC710922E6BFF500110143 /* PosicionesService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -166,6 +175,7 @@
 		F0D26F28221F347300AA72D4 /* TurismoApp */ = {
 			isa = PBXGroup;
 			children = (
+				F0FC710422E6BE7800110143 /* Posiciones */,
 				F00BA09B2249999900BEA4A2 /* New Group */,
 				F00BA091224935BF00BEA4A2 /* Barcode */,
 				F0386954223EFBA6007BE5C7 /* Home */,
@@ -220,6 +230,7 @@
 				F0B5E27A22346AEC005CABB3 /* PlacesManager.swift */,
 				F07F387D22287A9900476778 /* Place.swift */,
 				F0EDC7E122E4E866005220D6 /* Partido.swift */,
+				F0FC710B22E6C04A00110143 /* Posicion.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -231,6 +242,15 @@
 				F01CC8FE22444DD00090F18C /* DataFavorite.swift */,
 			);
 			path = Util;
+			sourceTree = "<group>";
+		};
+		F0FC710422E6BE7800110143 /* Posiciones */ = {
+			isa = PBXGroup;
+			children = (
+				F0FC710722E6BF6100110143 /* PosicionesViewController.swift */,
+				F0FC710D22E6D37000110143 /* PosicionCollectionViewCell.swift */,
+			);
+			path = Posiciones;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -317,6 +337,7 @@
 				F0E5A190222078240093CADF /* FavoriteViewController.swift in Sources */,
 				F079AEE6222C761200F02829 /* FavoriteCell.swift in Sources */,
 				F07F387B2228752300476778 /* DetailViewController.swift in Sources */,
+				F0FC710A22E6BFF500110143 /* PosicionesService.swift in Sources */,
 				F00E64DD223F023A005E5247 /* MainCollectionViewCell.swift in Sources */,
 				F00ACD1D2242C7EF00103A1D /* PlaceMap.swift in Sources */,
 				F079AEE8222C91B300F02829 /* BarcodeViewController.swift in Sources */,
@@ -326,8 +347,11 @@
 				F0EDC7E222E4E866005220D6 /* Partido.swift in Sources */,
 				F0EC467B22359923002AF0CC /* FMDatabaseAdditions.m in Sources */,
 				F0EDC7E422E4EF20005220D6 /* PartidoService.swift in Sources */,
+				F0FC710822E6BF6100110143 /* PosicionesViewController.swift in Sources */,
+				F0FC710E22E6D37000110143 /* PosicionCollectionViewCell.swift in Sources */,
 				F01CC8FF22444DD00090F18C /* DataFavorite.swift in Sources */,
 				F099578A223C4571007F5B50 /* MapViewController.swift in Sources */,
+				F0FC710C22E6C04A00110143 /* Posicion.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

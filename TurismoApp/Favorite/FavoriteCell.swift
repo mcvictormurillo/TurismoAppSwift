@@ -10,27 +10,7 @@ import UIKit
 
 class FavoriteCell: UICollectionViewCell {
     
-    
-    @IBOutlet var namePlace: UILabel!
-    @IBOutlet var favoriteImage: UIImageView!{
-        didSet {
-        //favoriteImage.image = UIImage(imageLiteralResourceName: imageName )
-        deleteButtonBackgroundView.layer.cornerRadius = deleteButtonBackgroundView.bounds.width/2.0
-        deleteButtonBackgroundView.layer.masksToBounds = true
-        deleteButtonBackgroundView.isHidden = !isEditing //lo ocultamos
-        }
-    }
-    @IBOutlet var deleteButtonBackgroundView: UIVisualEffectView!
-    var delegate: FavoriteViewCellDelegate?
-    var isEditing :Bool = false {
-        didSet{
-            deleteButtonBackgroundView.isHidden = !isEditing
-        }
-    }
-    
-    @IBAction func deleteButton(_ sender: UIButton) {
-        delegate?.delete(cell: self)
-    }
+    @IBOutlet var nombre: UILabel!
     
 }
 
